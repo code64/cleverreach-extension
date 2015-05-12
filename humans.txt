@@ -1,0 +1,19 @@
+/* TEAM */
+  Team: CODE64
+  Website: code64.de
+  Twitter: @code64
+  From: Munich, Germany
+
+  Developer: Sven Hofmann
+  Website: hofmannsven.com
+  Twitter: @hofmannsven
+  From: Munich, Germany
+
+  Localization: Sven Hofmann
+
+/* PLUGIN */
+  Language: English / German
+  Platform: WordPress / CleverReach
+  Support: https://github.com/hofmannsven/cleverreach-extension/issues
+  GitHub Download: https://github.com/hofmannsven/cleverreach-extension/
+  WordPress Download: http://wordpress.org/plugins/cleverreach-extension/
