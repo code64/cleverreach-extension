@@ -44,7 +44,7 @@ class Cre_Models {
 			$html .= $result->data;
 		}
 
-		$html .= '<div>'; // end of .cr_form-container
+		$html .= '</div>'; // end of .cr_form-container
 
 		return $html;
 
