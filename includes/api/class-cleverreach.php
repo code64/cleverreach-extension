@@ -17,7 +17,7 @@ class Cleverreach {
 
 	public function get_option( $option ) {
 
-		$option_group = get_option( 'cleverreach_interface' );
+		$option_group = get_option( 'cleverreach_extension' );
 		$option       = $option_group[ $option ];
 
 		return $option;
