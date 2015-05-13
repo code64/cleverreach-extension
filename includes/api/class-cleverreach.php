@@ -15,10 +15,22 @@ class Cleverreach {
 
 	}
 
+	/**
+	 * Get option value from database.
+	 *
+	 * @since 0.1.0
+	 * @param $option
+	 *
+	 * @return string
+	 */
 	public function get_option( $option ) {
 
 		$option_group = get_option( 'cleverreach_extension' );
-		$option       = $option_group[ $option ];
+		if ( isset( $option_group[ $option ] ) ) {
+			$option = $option_group[ $option ];
+		} else {
+			$option = '';
+		}
 
 		return $option;
 

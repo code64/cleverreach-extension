@@ -10,7 +10,7 @@ class Cre_Models {
 
 	public function init_shortcodes() {
 
-		// Add support for Visual Composer plugin
+		// Add support for Visual Composer plugin.
 		if ( function_exists( 'vc_map' ) ) {
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/supports/visual-composer.php';
 		}
@@ -27,7 +27,7 @@ class Cre_Models {
 		$client = new Api\Cleverreach();
 		$form = new Api\Cleverreach_Form_Adapter( $client );
 
-		// Parse shortcode attributes
+		// Parse shortcode attributes.
 		$atts = shortcode_atts(
 			array(
 				'form_id' => $client->get_option( 'form_id' ),
@@ -36,7 +36,7 @@ class Cre_Models {
 
 		$html = '<div class="cr_form-container">';
 
-		// Get form
+		// Parse form according to shortcode attributes.
 		if ( 'custom' === $atts['form_id'] ) {
 			$html .= apply_filters( 'cleverreach_extension_subscribe_form', esc_html__( 'Please apply your own form within your plugin or theme.', 'cleverreachextension' ) );
 		} else {

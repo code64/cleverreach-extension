@@ -17,19 +17,19 @@
 				},
 				beforeSend: function() {
 					$cr_container.find(cre.selector + cre.response_selector).remove();
-					$cr_container.prepend('<p class="' + cre.loading_selector + '">' + cre.loading + '</p>');
+					$cr_container.append('<p class="' + cre.loading_selector + '">' + cre.loading + '</p>');
 				},
 				success: function( response ) {
 					$cr_container.find(cre.selector + cre.loading_selector).remove();
 					if ( response.type === 'success' ) {
-						$cr_container.prepend('<p class="' + cre.response_selector + ' ' + cre.success_selector + '">' + cre.success + '</p>');
+						$cr_container.append('<p class="' + cre.response_selector + ' ' + cre.success_selector + '">' + cre.success + '</p>');
 					} else {
-						$cr_container.prepend('<p class="' + cre.response_selector + ' ' + cre.error_selector + '">' + response.status + '</p>');
+						$cr_container.append('<p class="' + cre.response_selector + ' ' + cre.error_selector + '">' + response.status + '</p>');
 					}
 				},
-				error: function ( data, errorThrown ) {
+				error: function () {
 					$cr_container.find(cre.selector + cre.loading_selector).remove();
-					$cr_container.prepend('<p class="' + cre.response_selector + ' ' + cre.error_selector + '">' + cre.error + '</p>');
+					$cr_container.append('<p class="' + cre.response_selector + ' ' + cre.error_selector + '">' + cre.error + '</p>');
 				}
 			});
 
