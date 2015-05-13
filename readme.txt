@@ -9,7 +9,7 @@ Stable tag: 0.1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
-Simple interface for CleverReach newsletter software using the official CleverReach SOAP API.
+Simple interface for [CleverReach](http://www.cleverreach.com/) newsletter software using the official CleverReach SOAP API.
 
 
 == Description ==
@@ -39,7 +39,7 @@ The CleverReach Extension for WordPress provides an easy way to embed your Cleve
 == Installation ==
 
 = Requirements =
-* PHP 5.3 or newer
+* PHP 5.3.0 or newer
 * PHP SOAP extension
 * CleverReach API key
 
@@ -63,7 +63,8 @@ If you find an issue, please [raise an issue](https://github.com/hofmannsven/cle
 == Frequently Asked Questions ==
 
 = Why would I use the API instead of the source code provided within my CleverReach account? =
-Using the API will allow you to push and pull data from CleverReach. This allows things like smooth form submission via Ajax and custom error handling.
+Using the API will allow you to push and pull data from CleverReach.
+This allows things like smooth form submission via Ajax and custom error handling.
 
 = Is it secure? =
 We heavily rely on the built in security tokens (nonces) which helps to protect against several types of attacks including CSRF.

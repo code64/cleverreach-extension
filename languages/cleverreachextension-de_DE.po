@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: CleverReach Extension 0.1.0\n"
 "Report-Msgid-Bugs-To: https://code64.de\n"
 "POT-Creation-Date: 2015-05-12 09:24+0100\n"
-"PO-Revision-Date: 2015-05-12 09:28+0100\n"
+"PO-Revision-Date: 2015-05-12 11:04+0100\n"
 "Last-Translator: Sven Hofmann <info@hofmannsven.com>\n"
 "Language-Team: Sven Hofmann <info@hofmannsven.com>\n"
 "Language: de_DE\n"
@@ -40,7 +40,7 @@ msgstr "Formular"
 
 #: admin/class-cre-admin.php:198
 msgid "Please enter your CleverReach API Key."
-msgstr "Bitte hinterlegen Sie hier Ihren CleverReach API Key."
+msgstr "Bitte hinterlege deinen CleverReach API Key."
 
 #: admin/class-cre-admin.php:199
 msgid "CleverReach API Keys can be created within Account » Extras » API"

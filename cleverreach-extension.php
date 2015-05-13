@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) or die();
 /**
  * Check requirements during plugin activation.
  *
- * @since    0.1.0
+ * @since 0.1.0
  */
 register_activation_hook( __FILE__, 'cleverreachextension_check_requirements' );
 function cleverreachextension_check_requirements() {
@@ -72,7 +72,7 @@ if ( ! class_exists( 'Cleverreach_Extension' ) ) {
 /**
  * Run plugin if everything is ready.
  *
- * @since    0.1.0
+ * @since 0.1.0
  */
 add_action( 'plugins_loaded', 'run_cleverreachextension', 0 );
 function run_cleverreachextension() {
