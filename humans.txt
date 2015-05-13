@@ -16,4 +16,4 @@
   Platform: WordPress / CleverReach
   Support: https://github.com/hofmannsven/cleverreach-extension/issues
   GitHub Download: https://github.com/hofmannsven/cleverreach-extension/
-  WordPress Download: http://wordpress.org/plugins/cleverreach-extension/
+  WordPress Download: https://wordpress.org/plugins/cleverreach-extension/
