@@ -1,6 +1,6 @@
 === CleverReach Extension ===
 Contributors: hofmannsven
-Tags: cleverreach, email, newsletter, sign-up, opt-in, form
+Tags: cleverreach, email, newsletter, sign-up, opt-in, form, ajax
 
 Requires at least: 4.0
 Tested up to: 4.2.2
@@ -9,12 +9,12 @@ Stable tag: 0.1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
-Simple interface for [CleverReach](http://www.cleverreach.com/) newsletter software using the official CleverReach SOAP API.
+Simple interface for CleverReach newsletter software using the official CleverReach SOAP API.
 
 
 == Description ==
 
-The CleverReach Extension for WordPress provides an easy way to embed your CleverReach sign-up form anywhere on your website.
+The CleverReach Extension for WordPress provides an easy way to embed your [CleverReach](http://www.cleverreach.com/) sign-up form anywhere on your website.
 
 = Features =
 * Easily embed your CleverReach sign-up form anywhere on your website
