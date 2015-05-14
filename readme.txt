@@ -1,4 +1,5 @@
 === CleverReach Extension ===
+
 Contributors: hofmannsven
 Tags: cleverreach, email, newsletter, sign-up, opt-in, form, ajax
 

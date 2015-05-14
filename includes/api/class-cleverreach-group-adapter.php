@@ -4,6 +4,14 @@ namespace CleverreachExtension\Core\Api;
 
 defined( 'ABSPATH' ) or die();
 
+/**
+ * Group adapter for CleverReach Api.
+ *
+ * @since      0.1.0
+ * @package    Cleverreach_Extension
+ * @subpackage Cleverreach_Extension/includes/api
+ * @author     Sven Hofmann <info@hofmannsven.com>
+ */
 class Cleverreach_Group_Adapter implements Group_Adapter {
 
 	private $cleverreach;
@@ -17,6 +25,7 @@ class Cleverreach_Group_Adapter implements Group_Adapter {
 	/**
 	 * Return list of available groups.
 	 *
+	 * @since 0.1.0
 	 * @return string
 	 */
 	public function get_list() {

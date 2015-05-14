@@ -6,12 +6,51 @@ use CleverreachExtension\Core\Api;
 
 defined( 'ABSPATH' ) or die();
 
+/**
+ * Contains all admin-specific functionality of the plugin.
+ *
+ * @since      0.1.0
+ * @package    Cleverreach_Extension
+ * @subpackage Cleverreach_Extension/admin
+ * @author     Sven Hofmann <info@hofmannsven.com>
+ */
 class Cre_Admin {
 
+	/**
+	 * The unique identifier of this plugin.
+	 *
+	 * @since  0.1.0
+	 * @access protected
+	 * @var    string $plugin_name The string used to uniquely identify this plugin.
+	 */
 	private $plugin_name;
+
+	/**
+	 * The unique identifier slug of this plugin.
+	 *
+	 * @since  0.1.0
+	 * @access protected
+	 * @var    string $plugin_slug The string used to uniquely identify this plugin.
+	 */
 	private $plugin_slug;
+
+	/**
+	 * The current version of the plugin.
+	 *
+	 * @since  0.1.0
+	 * @access protected
+	 * @var    string $plugin_version The current version of the plugin.
+	 */
 	private $plugin_version;
 
+	/**
+	 * Define the admin-specific functionality of the plugin.
+	 *
+	 * @since 0.1.0
+	 * @param string $plugin_name     The name of this plugin.
+	 * @param string $plugin_slug     The slug of this plugin.
+	 * @param string $plugin_version  The current version of this plugin.
+	 */
 	public function __construct( $plugin_name, $plugin_slug, $plugin_version ) {
 
 		$this->plugin_name = $plugin_name;
@@ -24,7 +63,7 @@ class Cre_Admin {
 	 * Add custom action links to plugins page.
 	 *
 	 * @since 0.1.0
-	 * @param $links
+	 * @param array $links
 	 *
 	 * @return array
 	 */
@@ -49,7 +88,7 @@ class Cre_Admin {
 		add_options_page(
 			$this->plugin_name,
 			$this->plugin_name,
-			'manage_options', // TODO: Check required user caps and implement filter
+			'manage_options', // Requires admin user.
 			$this->plugin_slug,
 			array( $this, 'render_options_page' )
 		);
@@ -105,10 +144,10 @@ class Cre_Admin {
 	}
 
 	/**
-	 * Register settings via WordPress Settings API
+	 * Register settings via WordPress Settings Api
 	 *
 	 * @since 0.1.0
-	 * @see https://codex.wordpress.org/Settings_API
+	 * @see   https://codex.wordpress.org/Settings_API
 	 */
 	public function register_settings() {
 
@@ -163,7 +202,7 @@ class Cre_Admin {
 	 * Prepare input to be saved in database.
 	 *
 	 * @since 0.1.0
-	 * @param $input
+	 * @param array $input
 	 *
 	 * @return array
 	 */
@@ -192,7 +231,7 @@ class Cre_Admin {
 	}
 
 	/**
-	 * Render API Key input field and description.
+	 * Render Api Key input field and description.
 	 *
 	 * @since 0.1.0
 	 */
@@ -301,7 +340,7 @@ class Cre_Admin {
 		// Tie notifications to plugin admin page.
 		if ( 'settings_page_' . $this->plugin_slug == get_current_screen()->id ) {
 			$client = new Api\Cleverreach();
-			// Check if there is an `api_kay`.
+			// Check if there is an `api_key`.
 			if ( $client->has_option( 'api_key' ) ) {
 				// Check if `api_key` is valid.
 				if ( ! $client->has_valid_api_key() ) {
@@ -324,7 +363,7 @@ class Cre_Admin {
 
 	/**
 	 * Render promotion section.
-	 * For users without an account only.
+	 * For users without api key only.
 	 *
 	 * @since 0.1.0
 	 *

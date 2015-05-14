@@ -4,11 +4,19 @@ namespace CleverreachExtension\Core\Api;
 
 defined( 'ABSPATH' ) or die();
 
+/**
+ * Form adapter for CleverReach Api.
+ *
+ * @since      0.1.0
+ * @package    Cleverreach_Extension
+ * @subpackage Cleverreach_Extension/includes/api
+ * @author     Sven Hofmann <info@hofmannsven.com>
+ */
 class Cleverreach_Form_Adapter implements Form_Adapter {
 
 	private $cleverreach;
 
-	public function __construct(Cleverreach $cleverreach) {
+	public function __construct( Cleverreach $cleverreach ) {
 
 		$this->cleverreach = $cleverreach;
 
@@ -16,6 +24,8 @@ class Cleverreach_Form_Adapter implements Form_Adapter {
 
 	/**
 	 * Returns a list of available forms for the given group
+	 *
+	 * @since 0.1.0
 	 *
 	 * @param $group_id
 	 *
@@ -36,6 +46,8 @@ class Cleverreach_Form_Adapter implements Form_Adapter {
 	/**
 	 * Returns the HTML code for the given embedded form.
 	 *
+	 * @since 0.1.0
+	 *
 	 * @param $form_id
 	 *
 	 * @return string
@@ -55,6 +67,8 @@ class Cleverreach_Form_Adapter implements Form_Adapter {
 	/**
 	 * Returns the embedded form HTML code, CSS styles and javascript for the given.
 	 *
+	 * @since 0.1.0
+	 *
 	 * @param $form_id
 	 *
 	 * @return string
@@ -73,6 +87,8 @@ class Cleverreach_Form_Adapter implements Form_Adapter {
 
 	/**
 	 * Will send the activation mail to the given email.
+	 *
+	 * @since 0.1.0
 	 *
 	 * @param $form_id
 	 * @param $email

@@ -6,23 +6,67 @@ use CleverreachExtension\Core\Api;
 
 defined( 'ABSPATH' ) or die();
 
+/**
+ * Contains all public-specific functionality of the plugin.
+ *
+ * @since      0.1.0
+ * @package    Cleverreach_Extension
+ * @subpackage Cleverreach_Extension/public
+ * @author     Sven Hofmann <info@hofmannsven.com>
+ */
 class Cre_Public {
 
+	/**
+	 * The unique identifier of this plugin.
+	 *
+	 * @since  0.1.0
+	 * @access protected
+	 * @var    string $plugin_name The string used to uniquely identify this plugin.
+	 */
 	private $plugin_name;
-	private $plugin_slug;
-	private $version;
 
-	public function __construct( $plugin_name, $plugin_slug, $version ) {
+	/**
+	 * The unique identifier slug of this plugin.
+	 *
+	 * @since  0.1.0
+	 * @access protected
+	 * @var    string $plugin_slug The string used to uniquely identify this plugin.
+	 */
+	private $plugin_slug;
+
+	/**
+	 * The current version of the plugin.
+	 *
+	 * @since  0.1.0
+	 * @access protected
+	 * @var    string $plugin_version The current version of the plugin.
+	 */
+	private $plugin_version;
+
+	/**
+	 * Define the admin-specific functionality of the plugin.
+	 *
+	 * @since 0.1.0
+	 * @param string $plugin_name     The name of this plugin.
+	 * @param string $plugin_slug     The slug of this plugin.
+	 * @param string $plugin_version  The current version of this plugin.
+	 */
+	public function __construct( $plugin_name, $plugin_slug, $plugin_version ) {
 
 		$this->plugin_name = $plugin_name;
 		$this->plugin_slug = $plugin_slug;
-		$this->version     = $version;
+		$this->plugin_version     = $plugin_version;
 
 	}
 
+	/**
+	 * Register the localized public scripts for this plugin.
+	 *
+	 * @since 0.1.0
+	 */
 	public function enqueue_scripts() {
 
-		wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/cleverreach-extension-public.js', array( 'jquery' ), $this->version, true );
+		wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/cleverreach-extension-public.js', array( 'jquery' ), $this->plugin_version, true );
 
 		wp_localize_script( $this->plugin_name, 'cre', array(
 			'ajaxurl'            => esc_url( admin_url( 'admin-ajax.php' ) ),
@@ -42,6 +86,11 @@ class Cre_Public {
 
 	}
 
+	/**
+	 * Parse form submission via ajax with status response.
+	 *
+	 * @since 0.1.0
+	 */
 	public function ajax_controller_interaction() {
 		check_ajax_referer( $this->plugin_name . '_ajax_interaction_nonce', 'nonce' );
 
