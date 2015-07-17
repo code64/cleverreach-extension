@@ -1,6 +1,6 @@
 # CleverReach WordPress Extension 
 
-[![WordPress](https://img.shields.io/wordpress/v/cleverreach-extension.svg)]()
+[![WordPress](https://img.shields.io/wordpress/v/cleverreach-extension.svg)](https://wordpress.org/plugins/cleverreach-extension/)
 [![GitHub license](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://raw.githubusercontent.com/hofmannsven/cleverreach-extension/master/LICENSE.md)
 [![Code Climate](https://codeclimate.com/github/hofmannsven/cleverreach-extension/badges/gpa.svg)](https://codeclimate.com/github/hofmannsven/cleverreach-extension)
 
