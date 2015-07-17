@@ -44,6 +44,13 @@ The CleverReach Extension for WordPress provides an easy way to embed your [Clev
 * PHP SOAP extension
 * CleverReach API key
 
+= Using WP-CLI =
+1. Install and activate: `wp plugin install cleverreach-extension --activate`
+
+= Using Composer =
+1. Install: `composer create-project hofmannsven/cleverreach-extension --stability=dev`
+2. Activate the plugin on the plugin dashboard
+
 = Using the WordPress dashboard =
 1. Navigate to the 'Add New' in the plugins dashboard
 2. Search for 'CleverReach Extension'
@@ -53,7 +60,7 @@ The CleverReach Extension for WordPress provides an easy way to embed your [Clev
 = Using FTP =
 1. Unzip the download package
 2. Upload `cleverreach-extension` folder to your plugins directory
-3. Activate the plugin through the 'Plugins' menu in WordPress
+3. Activate the plugin on the plugin dashboard
 
 
 == Support ==
