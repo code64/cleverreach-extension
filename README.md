@@ -39,7 +39,14 @@ It's a simple interface for [CleverReach](http://www.cleverreach.com/) newslette
 * PHP SOAP extension
 * CleverReach API key
 
-### Using the WordPress dashboard
+### Using WP-CLI
+1. Install and activate: `wp plugin install cleverreach-extension --activate`
+
+### Using Composer
+1. Install: `composer create-project hofmannsven/cleverreach-extension --stability=dev`
+2. Activate the plugin on the plugin dashboard
+
+### Using WordPress
 1. Navigate to the 'Add New' in the plugins dashboard
 2. Search for 'CleverReach Extension'
 3. Click 'Install Now'
@@ -48,7 +55,7 @@ It's a simple interface for [CleverReach](http://www.cleverreach.com/) newslette
 ### Using FTP
 1. Unzip the download package
 2. Upload `cleverreach-extension` folder to your plugins directory
-3. Activate the plugin through the 'Plugins' menu in WordPress
+3. Activate the plugin on the plugin dashboard
 
 
 *** 
