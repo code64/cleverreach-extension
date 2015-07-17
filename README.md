@@ -1,4 +1,8 @@
-# CleverReach WordPress Extension
+# CleverReach WordPress Extension 
+
+[![WordPress](https://img.shields.io/wordpress/v/cleverreach-extension.svg)]()
+[![GitHub license](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://raw.githubusercontent.com/hofmannsven/cleverreach-extension/master/LICENSE.md)
+[![Code Climate](https://codeclimate.com/github/hofmannsven/cleverreach-extension/badges/gpa.svg)](https://codeclimate.com/github/hofmannsven/cleverreach-extension)
 
 The CleverReach Extension for [WordPress](https://wordpress.org/) provides an easy way to embed your CleverReach sign-up form anywhere on your website.
 
