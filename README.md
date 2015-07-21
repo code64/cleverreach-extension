@@ -80,7 +80,7 @@ No customer data is stored within your WordPress database.
 We heavily rely on the security of CleverReach which is [tested and verified](http://www.cleverreach.com/security) according to German standards.
 
 #### Having problems with the PHP SOAP Extension?
-Check the [PHP SOAP Extension](https://github.com/hofmannsven/cleverreach-extension/wiki/PHP-SOAP-Extension) wiki page for further information.
+Check the [PHP SOAP wiki page](https://github.com/hofmannsven/cleverreach-extension/wiki/PHP-SOAP-Extension) for further information.
 
 #### How can I customize the sign-up form or the error messages?
 Check the [Wiki](https://github.com/hofmannsven/cleverreach-extension/wiki) for further information.
