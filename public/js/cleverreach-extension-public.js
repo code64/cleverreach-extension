@@ -1,3 +1,5 @@
+/*global cre:false */
+
 (function ($) {
 	'use strict';
 
