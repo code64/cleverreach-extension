@@ -31,6 +31,7 @@ The CleverReach Extension for WordPress provides an easy way to embed your Cleve
 = Languages =
 * English
 * German
+* Spanish
 
 = Integrations =
 * Coming soon: Visual Composer

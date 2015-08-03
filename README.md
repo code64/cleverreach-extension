@@ -22,6 +22,7 @@ It's a simple interface for [CleverReach](http://www.cleverreach.com/) newslette
 ### Languages
 * English
 * German
+* Spanish
 
 ### Integrations
 * Coming soon: Visual Composer
