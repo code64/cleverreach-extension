@@ -1,0 +1,57 @@
+.cleverreach-extension-options-page .cre-input-container,
+.cleverreach-extension-options-page .description {
+	float: none;
+	clear: both;
+}
+
+.cleverreach-extension-options-page .cre-input-container input {
+	float: left;
+}
+
+
+.cleverreach-extension-options-page .cre-info-message {
+	float: left;
+	padding: 4px 7px;
+}
+
+.cleverreach-extension-options-page .cre-info-message.invalid:before {
+	content:           '\f335';
+	color:             #d54e21;
+}
+
+.cleverreach-extension-options-page .cre-info-message.confirmed:before {
+	content:           '\f147';
+	color:             #79ba49;
+}
+
+.cleverreach-extension-options-page .cre-info-message.updating:before {
+	content:           '\f463';
+	color:             #d54e21;
+}
+
+.cleverreach-extension-options-page .cre-info-message.animate:before {
+	-webkit-animation: rotation 2s infinite linear;
+	animation:         rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform:         rotate(0deg)
+	}
+	100% {
+		-webkit-transform: rotate(359deg);
+		transform:         rotate(359deg)
+	}
+}
+
+@keyframes rotation {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform:         rotate(0deg)
+	}
+	100% {
+		-webkit-transform: rotate(359deg);
+		transform:         rotate(359deg)
+	}
+}

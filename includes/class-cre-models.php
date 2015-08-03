@@ -4,8 +4,6 @@ namespace CleverreachExtension\Core;
 
 use CleverreachExtension\Core\Api;
 
-defined( 'ABSPATH' ) or die();
-
 /**
  * Register and parse shortcode and also plugin integrations.
  *
@@ -45,13 +43,14 @@ class Cre_Models {
 	 */
 	public function parse_shortcode( $params ) {
 
+		$helper = new Cre_Helper();
 		$client = new Api\Cleverreach();
 		$form   = new Api\Cleverreach_Form_Adapter( $client );
 
 		// Parse shortcode attributes.
 		$atts = shortcode_atts(
 			array(
-				'form_id' => $client->get_option( 'form_id' ),
+				'form_id' => $helper->get_option( 'form_id' ),
 			), $params, 'cleverreach_extension'
 		);
 

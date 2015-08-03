@@ -2,6 +2,7 @@
 	'use strict';
 
 	$(document).ready(function () {
+
 		$(cre.selector + cre.container_selector + ' form').on('submit', function () {
 
 			var $cr_container = $(cre.selector + cre.container_selector);
@@ -36,6 +37,7 @@
 			return false;
 
 		});
+
 	});
 
 })(jQuery);

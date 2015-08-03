@@ -2,8 +2,6 @@
 
 namespace CleverreachExtension\Core\Api;
 
-defined( 'ABSPATH' ) or die();
-
 /**
  * Receiver interface according to CleverReach Api.
  *

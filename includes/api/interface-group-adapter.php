@@ -2,8 +2,6 @@
 
 namespace CleverreachExtension\Core\Api;
 
-defined( 'ABSPATH' ) or die();
-
 /**
  * Group interface according to CleverReach Api.
  *

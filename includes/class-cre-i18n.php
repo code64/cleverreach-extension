@@ -2,8 +2,6 @@
 
 namespace CleverreachExtension\Core;
 
-defined( 'ABSPATH' ) or die();
-
 /**
  * Define the internationalization functionality.
  *

@@ -2,9 +2,8 @@
 
 namespace CleverreachExtension\Viewadmin;
 
+use CleverreachExtension\Core;
 use CleverreachExtension\Core\Api;
-
-defined( 'ABSPATH' ) or die();
 
 /**
  * Contains all admin-specific functionality of the plugin.
@@ -47,15 +46,141 @@ class Cre_Admin {
 	 * Define the admin-specific functionality of the plugin.
 	 *
 	 * @since 0.1.0
-	 * @param string $plugin_name     The name of this plugin.
-	 * @param string $plugin_slug     The slug of this plugin.
-	 * @param string $plugin_version  The current version of this plugin.
+	 *
+	 * @param string $plugin_name    The name of this plugin.
+	 * @param string $plugin_slug    The slug of this plugin.
+	 * @param string $plugin_version The current version of this plugin.
 	 */
 	public function __construct( $plugin_name, $plugin_slug, $plugin_version ) {
 
-		$this->plugin_name = $plugin_name;
-		$this->plugin_slug = $plugin_slug;
+		$this->plugin_name    = $plugin_name;
+		$this->plugin_slug    = $plugin_slug;
 		$this->plugin_version = $plugin_version;
+
+		$helper        = new Core\Cre_Helper();
+		$this->api_key = $helper->get_option( 'api_key' );
+		$this->list_id = $helper->get_option( 'list_id' );
+		$this->form_id = $helper->get_option( 'form_id' );
+		$this->source  = $helper->get_option( 'source' );
+
+	}
+
+	/**
+	 * Register the admin styles for this plugin.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @param $hook
+	 */
+	public function admin_enqueue_styles( $hook ) {
+
+		// Enqueue scripts for plugin options page only.
+		if ( 'settings_page_' . $this->plugin_slug != $hook ) {
+			return;
+		}
+
+		wp_register_style(
+			$this->plugin_name . '_admin',
+			plugin_dir_url( __FILE__ ) . 'css/cleverreach-extension-admin.css',
+			array(),
+			$this->plugin_version,
+			'all'
+		);
+
+		wp_enqueue_style( $this->plugin_name . '_admin' );
+
+	}
+
+	/**
+	 * Register the localized admin scripts for this plugin.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @param $hook
+	 */
+	public function admin_enqueue_scripts( $hook ) {
+
+		// Enqueue scripts for plugin options page only.
+		if ( 'settings_page_' . $this->plugin_slug != $hook ) {
+			return;
+		}
+
+		wp_register_script(
+			$this->plugin_name . '_admin',
+			plugin_dir_url( __FILE__ ) . 'js/cleverreach-extension-admin.js',
+			array( 'jquery' ),
+			$this->plugin_version,
+			true
+		);
+
+		wp_localize_script(
+			$this->plugin_name . '_admin', 'cre_admin',
+			array(
+				'ajaxurl'            => esc_url( admin_url( 'admin-ajax.php' ) ),
+				'nonce'              => wp_create_nonce( $this->plugin_name . '_admin_ajax_interaction_nonce' ),
+				'selector'           => esc_attr( '.' ), // Selector supports only classes, yet.
+				'container_selector' => sanitize_html_class( 'cre-admin-form-container' ),
+				'response_selector'  => sanitize_html_class( 'cre-js-response' ),
+				'key_selector'       => sanitize_html_class( 'cre-admin-input-key' ),
+				'list_selector'      => sanitize_html_class( 'cre-admin-select-list' ),
+				'form_selector'      => sanitize_html_class( 'cre-admin-select-form' ),
+				'source_selector'    => sanitize_html_class( 'cre-admin-input-source' ),
+				'list_empty'         => esc_html__( 'Please select a list', 'cleverreachextension' ),
+				'form_empty'         => esc_html__( 'Please select a form', 'cleverreachextension' ),
+				'shortcode_selector' => sanitize_html_class( 'cre-admin-shortcode' )
+			)
+		);
+
+		wp_enqueue_script( $this->plugin_name . '_admin' );
+
+	}
+
+	/**
+	 * Save data and return API response as JSON.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @return array Return JSON `$result` with API response.
+	 */
+	public function admin_ajax_controller_interaction() {
+
+		check_ajax_referer( $this->plugin_name . '_admin_ajax_interaction_nonce', 'nonce' );
+
+		if ( $_POST['cr_admin_form'] && current_user_can( 'manage_options' ) ) { // Requires $_POST from admin user.
+
+			// Create or update database entry.
+			update_option( 'cleverreach_extension', $this->sanitize( $_POST['cr_admin_form'] ) );
+
+			$result  = array();
+			$client = new Api\Cleverreach();
+			$helper = new Core\Cre_Helper();
+
+			// Add status and list options to result.
+			if ( $client->has_valid_api_key() ) {
+				$result['status'] = 'success';
+
+				$group = new Api\Cleverreach_Group_Adapter( $client );
+				$result['list_options'] = $helper->parse_list( $group->get_list(), 'list_id' );
+			} else {
+				$result['status'] = 'error';
+			}
+
+			// Add form options to result.
+			if ( $client->has_valid_api_key() && $helper->has_option( 'list_id' ) ) {
+				$form = new Api\Cleverreach_Form_Adapter( $client );
+				$result['form_options'] = $helper->parse_list( $form->get_list( $helper->get_option( 'list_id' ) ), 'form_id' );
+			}
+
+			// Add shortcode value to result.
+			if ( $client->has_valid_api_key() && $helper->has_option( 'form_id' ) ) {
+				$result['shortcode_id'] = $helper->get_option( 'form_id' );
+			}
+
+			// Finally return JSON result.
+			$result = json_encode( $result );
+			echo $result;
+			die();
+		}
 
 	}
 
@@ -63,6 +188,7 @@ class Cre_Admin {
 	 * Add custom action links to plugins page.
 	 *
 	 * @since 0.1.0
+	 *
 	 * @param array $links
 	 *
 	 * @return array
@@ -96,27 +222,6 @@ class Cre_Admin {
 	}
 
 	/**
-	 * Get option value from database.
-	 *
-	 * @since 0.1.0
-	 * @param $option
-	 *
-	 * @return string
-	 */
-	public function get_option( $option ) {
-
-		$option_group = get_option( 'cleverreach_extension' );
-		if ( isset( $option_group[ $option ] ) ) {
-			$option = $option_group[ $option ];
-		} else {
-			$option = '';
-		}
-
-		return $option;
-
-	}
-
-	/**
 	 * Render options page.
 	 *
 	 * @since 0.1.0
@@ -124,10 +229,22 @@ class Cre_Admin {
 	public function render_options_page() {
 
 		echo '<div class="wrap cleverreach-extension-options-page">';
-		echo '<h2>' . esc_html__( $this->plugin_name ) . '</h2>';
+		echo '<h2>' . esc_html( $this->plugin_name ) . '</h2>';
 
-		echo wp_kses( $this->render_promotion_notice(), array( 'p' => array(), 'a' => array( 'href' => array() ), 'img' => array( 'src' => array() ) ) );
+		echo wp_kses(
+			$this->render_promotion_notice(),
+			array(
+				'p'   => array(),
+				'a'   => array(
+					'href' => array()
+				),
+				'img' => array(
+					'src' => array()
+				)
+			)
+		);
 
+		echo '<div class="cre-admin-form-container">';
 		echo '<form method="post" action="options.php">';
 
 		settings_fields( 'cleverreach_extension_group' );
@@ -136,8 +253,20 @@ class Cre_Admin {
 		submit_button();
 
 		echo '</form>';
+		echo '</div>'; // end of .cre-admin-form-container
 
-		echo wp_kses( $this->render_shortcode_preview(), array( 'h3' => array(), 'p' => array(), 'br' => array(), 'code' => array() ) );
+		echo wp_kses(
+			$this->render_shortcode_preview(),
+			array(
+				'h3'   => array(),
+				'p'    => array(),
+				'span' => array(
+					'class' => array()
+				),
+				'br'   => array(),
+				'code' => array()
+			)
+		);
 
 		echo '</div>'; // end of .wrap
 
@@ -202,6 +331,7 @@ class Cre_Admin {
 	 * Prepare input to be saved in database.
 	 *
 	 * @since 0.1.0
+	 *
 	 * @param array $input
 	 *
 	 * @return array
@@ -237,12 +367,17 @@ class Cre_Admin {
 	 */
 	public function render_api_key_field() {
 
-		$api_key = $this->get_option( 'api_key' );
+		echo '<div class="cre-input-container">';
+
+		$client  = new Api\Cleverreach();
 		printf(
-			'<input type="text" id="api_key" size="45" name="cleverreach_extension[api_key]" value="%s" />',
-			isset( $api_key ) ? esc_attr( $api_key ) : ''
+			'<input type="text" class="cre-admin-input-key" size="45" name="cleverreach_extension[api_key]" value="%s" /><div class="dashicons-before cre-info-message %s cre-js-response"></div>',
+			isset( $this->api_key ) ? esc_attr( $this->api_key ) : '',
+			$client->has_valid_api_key() ? 'confirmed' : 'invalid'
 		);
-		// TODO: echo '<span class="dashicons dashicons-yes"></span>';
+
+		echo '</div>'; // end of .input-container
+
 		echo '<p class="description">' . esc_html__( 'CleverReach API Keys can be created within Account » Extras » API', 'cleverreachextension' ) . '</p>';
 
 	}
@@ -254,24 +389,25 @@ class Cre_Admin {
 	 */
 	public function render_list_field() {
 
-		$client = new Api\Cleverreach();
+		$html = '<select class="cre-admin-select-list" name="cleverreach_extension[list_id]">';
 
+		$client = new Api\Cleverreach();
+		$helper = new Core\Cre_Helper();
 		if ( $client->has_valid_api_key() ) {
 
 			$group = new Api\Cleverreach_Group_Adapter( $client );
-			$list  = $group->get_list();
-			$list_id = $this->get_option( 'list_id' );
-
-			echo '<select id="list_id" name="cleverreach_extension[list_id]">';
-
-			foreach ( $list->data as $list_item ) {
-				$selected = ( $list_id == $list_item->id ) ? 'selected="selected" ' : '';
-				echo '<option ' . esc_attr( $selected ) . 'value="' . esc_attr( $list_item->id ) . '" />' . esc_attr( $list_item->name ) . '</option>';
-			}
-
-			echo '</select>';
+			$html .= $helper->parse_list_html(
+				$this->list_id,
+				$group->get_list(),
+				'list_id',
+				esc_html__( 'Please select a list', 'cleverreachextension' )
+			);
 
 		}
+
+		$html .= '</select>';
+
+		echo wp_kses( $html, $helper->allowed_html_select() );
 
 	}
 
@@ -282,24 +418,25 @@ class Cre_Admin {
 	 */
 	public function render_form_field() {
 
-		$client = new Api\Cleverreach();
+		$html = '<select class="cre-admin-select-form" name="cleverreach_extension[form_id]">';
 
-		if ( $client->has_valid_api_key() ) {
+		$client = new Api\Cleverreach();
+		$helper = new Core\Cre_Helper();
+		if ( $client->has_valid_api_key() && $helper->has_option( 'list_id' ) ) {
 
 			$form = new Api\Cleverreach_Form_Adapter( $client );
-			$list = $form->get_list( $this->get_option( 'list_id' ) );
-			$form_id = $this->get_option( 'form_id' );
-
-			echo '<select id="form_id" name="cleverreach_extension[form_id]">';
-
-			foreach ( $list->data as $list_item ) {
-				$selected = ( $form_id == $list_item->id ) ? 'selected="selected" ' : '';
-				echo '<option ' . esc_attr( $selected ) . 'value="' . esc_attr( $list_item->id ) . '" />' . esc_attr( $list_item->name ) . '</option>';
-			}
-
-			echo '</select>';
+			$html .= $helper->parse_list_html(
+				$this->form_id,
+				$form->get_list( $this->list_id ),
+				'form_id',
+				esc_html__( 'Please select a form', 'cleverreachextension' )
+			);
 
 		}
+
+		$html .= '</select>';
+
+		echo wp_kses( $html, $helper->allowed_html_select() );
 
 	}
 
@@ -310,11 +447,12 @@ class Cre_Admin {
 	 */
 	public function render_source_field() {
 
-		$source = $this->get_option( 'source' );
+		$source = $this->source;
 		printf(
-			'<input type="text" id="source" size="45" name="cleverreach_extension[source]" value="%s" />',
+			'<input type="text" class="cre-admin-input-source" size="45" name="cleverreach_extension[source]" value="%s" />',
 			isset( $source ) ? esc_attr( $source ) : ''
 		);
+
 		echo '<p class="description">' . esc_html__( '(optional)', 'cleverreachextension' ) . '</p>';
 
 	}
@@ -331,37 +469,6 @@ class Cre_Admin {
 	}
 
 	/**
-	 * Check options and render alerts as admin notices.
-	 *
-	 * @since 0.1.0
-	 */
-	public function render_admin_notices() {
-
-		// Tie notifications to plugin admin page.
-		if ( 'settings_page_' . $this->plugin_slug == get_current_screen()->id ) {
-			$client = new Api\Cleverreach();
-			// Check if there is an `api_key`.
-			if ( $client->has_option( 'api_key' ) ) {
-				// Check if `api_key` is valid.
-				if ( ! $client->has_valid_api_key() ) {
-					echo '<div class="error"><p>' . esc_html__( 'Your API key is invalid.', 'cleverreachextension' ) . '</p></div>';
-				} else {
-					// Check if there is a `list_id`.
-					if ( ! $client->has_option( 'list_id' ) ) {
-						echo '<div class="error"><p>' . esc_html__( 'Please select a list.', 'cleverreachextension' ) . '</p></div>';
-					} else {
-						// Check if there is a `form_id`.
-						if ( ! $client->has_option( 'form_id' ) ) {
-							echo '<div class="error"><p>' . esc_html__( 'Please select a form.', 'cleverreachextension' ) . '</p></div>';
-						}
-					}
-				}
-			}
-		}
-
-	}
-
-	/**
 	 * Render promotion section.
 	 * For users without api key only.
 	 *
@@ -373,9 +480,9 @@ class Cre_Admin {
 
 		$result = '';
 
-		$client = new Api\Cleverreach();
+		$helper = new Core\Cre_Helper();
 
-		if ( ! $client->has_option( 'api_key' ) ) {
+		if ( ! $helper->has_option( 'api_key' ) ) {
 
 			$result .= '<p>';
 			$result .= esc_html__( 'Still need a CleverReach account?', 'cleverreachextension' ) . ' ';
@@ -411,7 +518,8 @@ class Cre_Admin {
 		$result .= '</p>';
 
 		$result .= '<p>';
-		$result .= '<code>[cleverreach_extension form_id="' . $this->get_option( 'form_id' ) . '"]</code>';
+		$shortcode_id = $this->form_id ? $this->form_id : '';
+		$result .= '<code>[cleverreach_extension form_id="<span class="cre-admin-shortcode">' . $shortcode_id . '</span>"]</code>';
 		$result .= '</p>';
 
 		return $result;

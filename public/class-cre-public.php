@@ -3,8 +3,7 @@
 namespace CleverreachExtension\Viewpublic;
 
 use CleverreachExtension\Core\Api;
-
-defined( 'ABSPATH' ) or die();
+use CleverreachExtension\Core\Cre_Helper;
 
 /**
  * Contains all public-specific functionality of the plugin.
@@ -47,15 +46,16 @@ class Cre_Public {
 	 * Define the admin-specific functionality of the plugin.
 	 *
 	 * @since 0.1.0
-	 * @param string $plugin_name     The name of this plugin.
-	 * @param string $plugin_slug     The slug of this plugin.
-	 * @param string $plugin_version  The current version of this plugin.
+	 *
+	 * @param string $plugin_name    The name of this plugin.
+	 * @param string $plugin_slug    The slug of this plugin.
+	 * @param string $plugin_version The current version of this plugin.
 	 */
 	public function __construct( $plugin_name, $plugin_slug, $plugin_version ) {
 
-		$this->plugin_name = $plugin_name;
-		$this->plugin_slug = $plugin_slug;
-		$this->plugin_version     = $plugin_version;
+		$this->plugin_name    = $plugin_name;
+		$this->plugin_slug    = $plugin_slug;
+		$this->plugin_version = $plugin_version;
 
 	}
 
@@ -66,38 +66,52 @@ class Cre_Public {
 	 */
 	public function enqueue_scripts() {
 
-		wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/cleverreach-extension-public.js', array( 'jquery' ), $this->plugin_version, true );
+		wp_register_script(
+			$this->plugin_name,
+			plugin_dir_url( __FILE__ ) . 'js/cleverreach-extension-public.js',
+			array( 'jquery' ),
+			$this->plugin_version,
+			true
+		);
 
-		wp_localize_script( $this->plugin_name, 'cre', array(
-			'ajaxurl'            => esc_url( admin_url( 'admin-ajax.php' ) ),
-			'nonce'              => wp_create_nonce( $this->plugin_name . '_ajax_interaction_nonce' ),
-			'loading'            => sanitize_text_field( apply_filters( 'cleverreach_extension_loading_msg', esc_html__( 'Saving...', 'cleverreachextension' ) ) ),
-			'success'            => sanitize_text_field( apply_filters( 'cleverreach_extension_success_msg', esc_html__( 'Please check your email to confirm your subscription.', 'cleverreachextension' ) ) ),
-			'error'              => sanitize_text_field( apply_filters( 'cleverreach_extension_error_msg', esc_html__( 'Sorry, there was a problem saving your data. Please try later or contact the administrator.', 'cleverreachextension' ) ) ),
-			'selector'           => esc_attr( '.' ), // Selector supports only classes, yet.
-			'container_selector' => sanitize_html_class( apply_filters( 'cleverreach_extension_container_selector', 'cr_form-container' ) ), // TODO: Also apply filter on container class within models
-			'loading_selector'   => sanitize_html_class( apply_filters( 'cleverreach_extension_loading_selector', 'cr_loading' ) ),
-			'success_selector'   => sanitize_html_class( apply_filters( 'cleverreach_extension_success_selector', 'cr_success' ) ),
-			'response_selector'  => sanitize_html_class( apply_filters( 'cleverreach_extension_response_selector', 'cr_response' ) ),
-			'error_selector'     => sanitize_html_class( apply_filters( 'cleverreach_extension_error_selector', 'cr_error' ) )
-		) );
+		wp_localize_script(
+			$this->plugin_name,
+			'cre',
+			array(
+				'ajaxurl'            => esc_url( admin_url( 'admin-ajax.php' ) ),
+				'nonce'              => wp_create_nonce( $this->plugin_name . '_ajax_interaction_nonce' ),
+				'loading'            => sanitize_text_field( apply_filters( 'cleverreach_extension_loading_msg', esc_html__( 'Saving...', 'cleverreachextension' ) ) ),
+				'success'            => sanitize_text_field( apply_filters( 'cleverreach_extension_success_msg', esc_html__( 'Please check your email to confirm your subscription.', 'cleverreachextension' ) ) ),
+				'error'              => sanitize_text_field( apply_filters( 'cleverreach_extension_error_msg', esc_html__( 'Sorry, there was a problem saving your data. Please try later or contact the administrator.', 'cleverreachextension' ) ) ),
+				'selector'           => esc_attr( '.' ), // Selector supports only classes, yet.
+				'container_selector' => sanitize_html_class( apply_filters( 'cleverreach_extension_container_selector', 'cr_form-container' ) ),
+				// TODO: Also apply filter on container class within models
+				'loading_selector'   => sanitize_html_class( apply_filters( 'cleverreach_extension_loading_selector', 'cr_loading' ) ),
+				'success_selector'   => sanitize_html_class( apply_filters( 'cleverreach_extension_success_selector', 'cr_success' ) ),
+				'response_selector'  => sanitize_html_class( apply_filters( 'cleverreach_extension_response_selector', 'cr_response' ) ),
+				'error_selector'     => sanitize_html_class( apply_filters( 'cleverreach_extension_error_selector', 'cr_error' ) )
+			)
+		);
 
 		wp_enqueue_script( $this->plugin_name );
 
 	}
 
 	/**
-	 * Parse form submission via ajax with status response.
+	 * Parse form submission via ajax and return status response.
 	 *
 	 * @since 0.1.0
 	 */
 	public function ajax_controller_interaction() {
+
 		check_ajax_referer( $this->plugin_name . '_ajax_interaction_nonce', 'nonce' );
 
 		$result = $post_attr = array();
 
+		// @TODO: if ( $_POST['cr_form'] ) {
+
 		// Parse serialized ajax post data as `$post` (array).
-		parse_str( $_POST['cr_form'], $post );
+		parse_str( $_POST['cr_form'], $post ); // @TODO: Get rid of `parse_str()`
 
 		if ( is_email( $post['email'] ) ) :
 
@@ -109,21 +123,28 @@ class Cre_Public {
 			foreach ( $post as $key => $value ) {
 
 				if ( 'email' != $key ) { // Skip 'email' as this is not needed as separate attribute.
-					// Attribute `$key` may only contain lowercase a-z and 0-9. Everything else will be converted to `_`.
-					array_push( $post_attr, array( 'key' => sanitize_html_class( $key ), 'value' => sanitize_text_field( $value ) ) );
+					array_push(
+						$post_attr,
+						array(
+							'key'   => sanitize_html_class( $key ),
+							// Attribute `$key` may only contain lowercase a-z and 0-9. Everything else will be converted to `_`.
+					        'value' => sanitize_text_field( $value )
+						)
+					);
 				}
 
 			}
 
 			// Populate `$source` (string)
-			if ( $client->has_option( 'source' ) ) {
-				$source = $client->get_option( 'source' );
+			$helper = new Cre_Helper();
+			if ( $helper->has_option( 'source' ) ) {
+				$source = $helper->get_option( 'source' );
 			} else {
 				$source = get_bloginfo( 'name' );
 			}
 
 			// Populate `$user` (array) according to CleverReach API defaults.
-			$user = array(
+			$user           = array(
 				'email'      => sanitize_email( $post['email'] ),
 				'registered' => time(),
 				// 'activated' => time(), // Force double opt-in.
@@ -142,12 +163,12 @@ class Cre_Public {
 
 				// Send activation mail.
 				$user_data = array(
-					'user_ip'    => '127.0.0.1', // Populate `user_ip` with fake IP addresss.
+					'user_ip'    => '127.0.0.1', // Populate `user_ip` with fake IP address.
 					'user_agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:14.0) Gecko/20100101 Firefox/14.0.1', // Populate `user_agent` also fake data.
 					'referer'    => esc_url( home_url() ),
 				);
 
-				$form->send_activation_mail( $client->get_option( 'form_id' ), sanitize_email( $post['email'] ), $user_data );
+				$form->send_activation_mail( $helper->get_option( 'form_id' ), sanitize_email( $post['email'] ), $user_data );
 
 			} else {
 

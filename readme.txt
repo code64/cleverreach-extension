@@ -5,7 +5,7 @@ Tags: cleverreach, email, newsletter, sign-up, opt-in, form, ajax
 
 Requires at least: 4.0
 Tested up to: 4.2.2
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -82,6 +82,9 @@ Visit [CleverReach Extension on Github](https://github.com/hofmannsven/cleverrea
 
 
 == Changelog ==
+
+= 0.2.0 =
+* Reworked admin interaction and code cleanup
 
 = 0.1.0 =
 * Initial release

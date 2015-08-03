@@ -11,7 +11,7 @@
  * Plugin Name: CleverReach Extension
  * Plugin URI:  https://github.com/hofmannsven/cleverreach-extension
  * Description: Simple interface for CleverReach newsletter software using the official CleverReach SOAP API.
- * Version:     0.1.0
+ * Version:     0.2.0
  * Author:      CODE64
  * Author URI:  http://code64.de/
  * License:     GPLv3
@@ -21,7 +21,9 @@
  */
 
 // If this file is called directly, abort.
-defined( 'ABSPATH' ) or die();
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
 
 /**
  * Check requirements during plugin activation.
@@ -80,11 +82,12 @@ function run_cleverreachextension() {
 	// Define plugin meta.
 	$plugin_name     = esc_html__( 'CleverReach Extension', 'cleverreachextension' );
 	$plugin_slug     = 'cleverreach-extension';
+	$plugin_settings = 'cleverreach_extension';
 	$plugin_basename = plugin_basename( __FILE__ );
-	$plugin_version  = '0.1.0';
+	$plugin_version  = '0.2.0';
 
 	// Finally we're ready to run the plugin.
-	$plugin = new \CleverreachExtension\Core\CleverReach_Extension( $plugin_name, $plugin_slug, $plugin_basename, $plugin_version );
+	$plugin = new \CleverreachExtension\Core\CleverReach_Extension( $plugin_name, $plugin_slug, $plugin_settings, $plugin_basename, $plugin_version );
 	$plugin->run();
 
 }
