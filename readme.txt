@@ -4,7 +4,7 @@ Contributors: hofmannsven
 Tags: cleverreach, email, newsletter, sign-up, opt-in, form, ajax
 
 Requires at least: 4.0
-Tested up to: 4.2.2
+Tested up to: 4.2.3
 Stable tag: 0.2.0
 
 License: GPLv3
@@ -15,7 +15,7 @@ Simple interface for CleverReach newsletter software using the official CleverRe
 
 == Description ==
 
-The CleverReach Extension for WordPress provides an easy way to embed your [CleverReach](http://www.cleverreach.com/) sign-up form anywhere on your website.
+The CleverReach Extension for WordPress provides an easy way to embed your CleverReach](http://www.cleverreach.com/) sign-up form anywhere on your website.
 
 = Features =
 * Easily embed your CleverReach sign-up form anywhere on your website
@@ -31,6 +31,7 @@ The CleverReach Extension for WordPress provides an easy way to embed your [Clev
 = Languages =
 * English
 * German
+* Spanish
 
 = Integrations =
 * Coming soon: Visual Composer
@@ -44,6 +45,13 @@ The CleverReach Extension for WordPress provides an easy way to embed your [Clev
 * PHP SOAP extension
 * CleverReach API key
 
+= Using WP-CLI =
+1. Install and activate: `wp plugin install cleverreach-extension --activate`
+
+= Using Composer =
+1. Install: `composer create-project hofmannsven/cleverreach-extension --stability=dev`
+2. Activate the plugin on the plugin dashboard
+
 = Using the WordPress dashboard =
 1. Navigate to the 'Add New' in the plugins dashboard
 2. Search for 'CleverReach Extension'
@@ -53,7 +61,7 @@ The CleverReach Extension for WordPress provides an easy way to embed your [Clev
 = Using FTP =
 1. Unzip the download package
 2. Upload `cleverreach-extension` folder to your plugins directory
-3. Activate the plugin through the 'Plugins' menu in WordPress
+3. Activate the plugin on the plugin dashboard
 
 
 == Support ==
@@ -68,8 +76,11 @@ Using the API will allow you to push and pull data from CleverReach.
 This allows things like smooth form submission via Ajax and custom error handling.
 
 = Is it secure? =
-We heavily rely on the built in security tokens (nonces) which helps to protect against several types of attacks including CSRF.
-Moreover no customer data is stored within your WordPress database.
+No customer data is stored within your WordPress database. 
+We heavily rely on the security of CleverReach which is [tested and verified](http://www.cleverreach.com/security) according to German standards.
+
+= Having problems with the PHP SOAP Extension? =
+Check the [PHP SOAP wiki page](https://github.com/hofmannsven/cleverreach-extension/wiki/PHP-SOAP-Extension) for further information.
 
 = How can I customize the sign-up form or the error messages? =
 Check the [Wiki](https://github.com/hofmannsven/cleverreach-extension/wiki) for further information.
