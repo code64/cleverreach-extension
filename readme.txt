@@ -23,7 +23,7 @@ The CleverReach Extension for WordPress provides an easy way to embed your Cleve
 * Smooth form submission using Ajax (no page reload)
 * Optional: Customize your form and error messages via filters (Check the [Wiki](https://github.com/hofmannsven/cleverreach-extension/wiki) for available filters)
 
-= Coming soon =
+= Looking ahead =
 * Unsubscribe form
 * Support for WordPress Widgets
 * PHPUnit Tests
@@ -41,6 +41,9 @@ The CleverReach Extension for WordPress provides an easy way to embed your Cleve
 == Installation ==
 
 = Requirements =
+Using the latest version of WordPress and PHP is highly recommended.
+
+* WordPress 4.0 or newer
 * PHP 5.3.0 or newer
 * PHP SOAP extension
 * CleverReach API key
