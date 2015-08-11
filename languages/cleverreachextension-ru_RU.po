@@ -1,0 +1,140 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CleverReach Extension 0.1.0\n"
+"Report-Msgid-Bugs-To: https://code64.de\n"
+"POT-Creation-Date: 2015-08-11 13:25+0100\n"
+"PO-Revision-Date: 2015-08-11 13:27+0100\n"
+"Last-Translator: Sven Hofmann <info@hofmannsven.com>\n"
+"Language-Team: Sven Hofmann <info@hofmannsven.com>\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x;_ex;_nx;esc_attr__;esc_attr_e;esc_attr_x;"
+"esc_html__;esc_html_e;esc_html_x;_n_noop;_nx_noop\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/class-cre-admin.php:74 admin/class-cre-admin.php:162
+msgid "Settings"
+msgstr "Настройки"
+
+#: admin/class-cre-admin.php:169
+msgid "API Key"
+msgstr "API-ключ"
+
+#: admin/class-cre-admin.php:177
+msgid "List"
+msgstr "Список"
+
+#: admin/class-cre-admin.php:185
+msgid "Form"
+msgstr "Форма"
+
+#: admin/class-cre-admin.php:193
+msgid "Source"
+msgstr "Источник"
+
+#: admin/class-cre-admin.php:246
+msgid "CleverReach API Keys can be created within Account » Extras » API"
+msgstr "Чтобы создать CleverReach API-ключ, перейдите в Account » Extras » API"
+
+#: admin/class-cre-admin.php:318
+msgid "(optional)"
+msgstr "(необязательное поле)"
+
+#: admin/class-cre-admin.php:329
+msgid "Use the fields below to connect WordPress and CleverReach."
+msgstr "Используйте поля ниже, чтобы связать WordPress и CleverReach."
+
+#: admin/class-cre-admin.php:347 includes/api/class-cleverreach.php:110
+msgid "Your API key is invalid."
+msgstr "Ваш API-ключ недействителен."
+
+#: admin/class-cre-admin.php:351
+msgid "Please select a list."
+msgstr "Пожалуйста, выберите список."
+
+#: admin/class-cre-admin.php:355
+msgid "Please select a form."
+msgstr "Пожалуйста, выберите форму."
+
+#: admin/class-cre-admin.php:381
+msgid "Still need a CleverReach account?"
+msgstr "У Вас нет аккаунта CleverReach?"
+
+#: admin/class-cre-admin.php:383
+msgid "Sign up for free!"
+msgstr "Зарегистрируйтесь бесплатно!"
+
+#: admin/class-cre-admin.php:406
+msgid "Your Shortcode"
+msgstr "Ваш код для вставки"
+
+#: admin/class-cre-admin.php:409
+msgid "You can use the shortcode below everywhere on your page."
+msgstr ""
+"Вы можете использовать код, который приведен ниже, для вставки в любой "
+"раздел веб-сайта."
+
+#: admin/class-cre-admin.php:410
+msgid "Check the wiki on how to customize your form."
+msgstr "Подробнее о том, как настроить вашу форму, читайте в wiki."
+
+#: cleverreach-extension.php:43
+#, php-format
+msgid "CleverReach Extension plugin requires PHP %s or greater."
+msgstr "Для плагина CleverReach Extension требуется PHP версии %s и выше."
+
+#: cleverreach-extension.php:44 cleverreach-extension.php:53
+msgid "Plugin Activation Error"
+msgstr "Ошибка при активации плагина"
+
+#: cleverreach-extension.php:52
+#, php-format
+msgid "CleverReach Extension plugin requires PHP %s extension."
+msgstr "Для плагина CleverReach Extension требуется расширение PHP %s."
+
+#: cleverreach-extension.php:81
+msgid "CleverReach Extension"
+msgstr "CleverReach Extension"
+
+#: includes/class-cre-models.php:62
+msgid "Please apply your own form within your plugin or theme."
+msgstr ""
+"Пожалуйста, используйте Вашу собственную форму для вашего плагина или темы."
+
+#: public/class-cre-public.php:74
+msgid "Saving..."
+msgstr "Сохранение…"
+
+#: public/class-cre-public.php:75
+msgid "Please check your email to confirm your subscription."
+msgstr ""
+"Для подтверждения подписки на рассылку проверьте, пожалуйста, Вашу "
+"электронную почту."
+
+#: public/class-cre-public.php:76
+msgid ""
+"Sorry, there was a problem saving your data. Please try later or contact the "
+"administrator."
+msgstr ""
+"При сохранении данных произошла ошибка. Пожалуйста, повторите попытку позже "
+"или обратитесь к администратору сайта."
+
+#: public/class-cre-public.php:157
+msgid "It seems like you're already subscribed to our list."
+msgstr "Вы уже подписались на нашу рассылку."
+
+#: public/class-cre-public.php:159
+msgid "Sorry, there seems to be a problem with your data."
+msgstr "При обработке Ваших данных произошла ошибка."
+
+#: public/class-cre-public.php:167
+msgid "Sorry, there seems to be a problem with your email address."
+msgstr ""
+"Произошла ошибка. Пожалуйста, введите действительный адрес электронной "
+"почты. "

@@ -23,6 +23,7 @@ It's a simple interface for [CleverReach](http://www.cleverreach.com/) newslette
 * English
 * German
 * Spanish
+* Russian
 
 ### Integrations
 * Coming soon: Visual Composer
