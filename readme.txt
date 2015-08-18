@@ -26,7 +26,7 @@ The CleverReach Extension for WordPress provides an easy way to embed your Cleve
 = Looking ahead =
 * Unsubscribe form
 * Support for WordPress Widgets
-* PHPUnit Tests
+* [PHPUnit](https://phpunit.de/) Tests
 
 = Languages =
 * English
@@ -35,8 +35,8 @@ The CleverReach Extension for WordPress provides an easy way to embed your Cleve
 * Russian
 
 = Integrations =
-* Coming soon: Visual Composer
-* Coming soon: Contact Form 7
+* [Visual Composer](http://vc.wpbakery.com/)
+* Coming soon: [Contact Form 7](http://contactform7.com/)
 
 
 == Installation ==
@@ -93,19 +93,21 @@ Check the [Wiki](https://github.com/hofmannsven/cleverreach-extension/wiki) for 
 See [CleverReach Extension on Github](https://github.com/hofmannsven/cleverreach-extension) for a detailed rundown of common issues.
 
 = Where can I get more information and support for this plugin? =
-Visit [CleverReach Extension on Github](https://github.com/hofmannsven/cleverreach-extension)
+Follow [CleverReach Extension on Github](https://github.com/hofmannsven/cleverreach-extension)
 
 
 == Screenshots ==
 
-1. Animated screenshot of the plugin admin settings
+1. Animated screenshot of the plugin admin settings page
 
 
 == Changelog ==
 
 = 0.2.0 =
 * Reworked admin interaction
-* Better file loading and code cleanup
+* Spanish & Russian translation
+* Visual Composer plugin integration
+* Better file handling, code cleanup and documentation
 
 = 0.1.0 =
 * Initial release

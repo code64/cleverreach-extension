@@ -15,16 +15,11 @@ use CleverreachExtension\Core\Api;
 class Cre_Models {
 
 	/**
-	 * Init plugin shortcode with integrations.
+	 * Init plugin shortcode.
 	 *
 	 * @since 0.1.0
 	 */
 	public function init_shortcodes() {
-
-		// Add Visual Composer plugin integration.
-		if ( function_exists( 'vc_map' ) ) {
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/supports/visual-composer.php';
-		}
 
 		add_shortcode(
 			'cleverreach_extension',

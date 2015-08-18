@@ -142,6 +142,7 @@ class Cleverreach_Extension {
 	 */
 	private function load_dependencies() {
 
+		// Required plugin core files.
 		$this->require_plugin_files(
 			array(
 				'includes/class-cre-loader',
@@ -161,6 +162,11 @@ class Cleverreach_Extension {
 				'includes/api/class-cleverreach-receiver-adapter',
 			)
 		);
+
+		// Check for Visual Composer plugin.
+		if ( function_exists( 'vc_map' ) ) {
+			$this->require_plugin_file( 'includes/supports/visual-composer' );
+		}
 
 		$this->loader = new Cre_Loader();
 

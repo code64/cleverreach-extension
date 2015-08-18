@@ -17,7 +17,7 @@ It's a simple interface for [CleverReach](http://www.cleverreach.com/) newslette
 ### Looking ahead
 * Unsubscribe form
 * Support for WordPress Widgets
-* PHPUnit Tests
+* [PHPUnit](https://phpunit.de/) Tests
 
 ### Languages
 * English
@@ -26,8 +26,8 @@ It's a simple interface for [CleverReach](http://www.cleverreach.com/) newslette
 * Russian
 
 ### Integrations
-* Coming soon: Visual Composer
-* Coming soon: Contact Form 7
+* [Visual Composer](http://vc.wpbakery.com/)
+* Coming soon: [Contact Form 7](http://contactform7.com/)
 
 
 *** 
