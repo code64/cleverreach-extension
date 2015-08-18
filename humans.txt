@@ -9,10 +9,10 @@
   Twitter: @hofmannsven
   From: Munich, Germany
 
-  Localization: Sven Hofmann, Fabian Daiser
+  Localization: Sven Hofmann, Fabian Daiser, Anastasia Sevastyanova
 
 /* PLUGIN */
-  Language: English / German / Spanish
+  Language: English / German / Spanish / Russian
   Platform: WordPress / CleverReach
   Support: https://github.com/hofmannsven/cleverreach-extension/issues
   GitHub Download: https://github.com/hofmannsven/cleverreach-extension/
