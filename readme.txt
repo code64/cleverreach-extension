@@ -96,6 +96,11 @@ See [CleverReach Extension on Github](https://github.com/hofmannsven/cleverreach
 Visit [CleverReach Extension on Github](https://github.com/hofmannsven/cleverreach-extension)
 
 
+== Screenshots ==
+
+1. Animated screenshot of the plugin admin settings
+
+
 == Changelog ==
 
 = 0.2.0 =
