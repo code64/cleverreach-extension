@@ -96,6 +96,45 @@ class Cleverreach_Extension {
 	}
 
 	/**
+	 * Require a bunch of plugin-specific files.
+	 *
+	 * @since  0.2.0
+	 * @access private
+	 * @param  array $files
+	 */
+	private function require_plugin_files( $files = array() ) {
+
+		if ( array_filter( $files ) ) {
+			foreach ( $files as $file ) {
+				$this->require_plugin_file( $file );
+			}
+		}
+
+	}
+
+	/**
+	 * Require a single plugin-specific file.
+	 *
+	 * @since  0.2.0
+	 * @access private
+	 * @param  string $path
+	 */
+	private function require_plugin_file( $path = '' ) {
+
+		// Create the base path just once.
+		static $base = false;
+
+		! $base && $base = plugin_dir_path( dirname( __FILE__ ) );
+		$file = $base . $path . '.php';
+
+		// Check for `$path` and `file_exists()`, even if it costs some extra performance.
+		if ( $path && file_exists( $file ) ) {
+			require $file;
+		}
+
+	}
+
+	/**
 	 * Load the required dependencies for this plugin.
 	 *
 	 * @since  0.1.0
@@ -103,24 +142,25 @@ class Cleverreach_Extension {
 	 */
 	private function load_dependencies() {
 
-		// @TODO: Include via spl_autoload_register()
-		$plugin_root = dirname( __FILE__ );
-		require_once plugin_dir_path( $plugin_root ) . 'includes/class-cre-loader.php';
-		require_once plugin_dir_path( $plugin_root ) . 'includes/class-cre-helper.php';
-		require_once plugin_dir_path( $plugin_root ) . 'includes/class-cre-i18n.php';
-		require_once plugin_dir_path( $plugin_root ) . 'admin/class-cre-admin.php';
-		require_once plugin_dir_path( $plugin_root ) . 'public/class-cre-public.php';
-		require_once plugin_dir_path( $plugin_root ) . 'includes/class-cre-models.php';
+		$this->require_plugin_files(
+			array(
+				'includes/class-cre-loader',
+				'includes/class-cre-helper',
+				'includes/class-cre-i18n',
+				'admin/class-cre-admin',
+				'public/class-cre-public',
+				'includes/class-cre-models',
 
-		// Get the interfaces first
-		require_once plugin_dir_path( $plugin_root ) . 'includes/api/interface-group-adapter.php';
-		require_once plugin_dir_path( $plugin_root ) . 'includes/api/interface-form-adapter.php';
-		require_once plugin_dir_path( $plugin_root ) . 'includes/api/interface-receiver-adapter.php';
+				'includes/api/interface-group-adapter',
+				'includes/api/interface-form-adapter',
+				'includes/api/interface-receiver-adapter',
 
-		require_once plugin_dir_path( $plugin_root ) . 'includes/api/class-cleverreach.php';
-		require_once plugin_dir_path( $plugin_root ) . 'includes/api/class-cleverreach-group-adapter.php';
-		require_once plugin_dir_path( $plugin_root ) . 'includes/api/class-cleverreach-form-adapter.php';
-		require_once plugin_dir_path( $plugin_root ) . 'includes/api/class-cleverreach-receiver-adapter.php';
+				'includes/api/class-cleverreach',
+				'includes/api/class-cleverreach-group-adapter',
+				'includes/api/class-cleverreach-form-adapter',
+				'includes/api/class-cleverreach-receiver-adapter',
+			)
+		);
 
 		$this->loader = new Cre_Loader();
 

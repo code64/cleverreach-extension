@@ -98,7 +98,8 @@ Visit [CleverReach Extension on Github](https://github.com/hofmannsven/cleverrea
 == Changelog ==
 
 = 0.2.0 =
-* Reworked admin interaction and code cleanup
+* Reworked admin interaction
+* Better file loading and code cleanup
 
 = 0.1.0 =
 * Initial release
