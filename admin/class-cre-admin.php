@@ -229,7 +229,7 @@ class Cre_Admin {
 	public function render_options_page() {
 
 		echo '<div class="wrap cleverreach-extension-options-page">';
-		echo '<h2>' . esc_html( $this->plugin_name ) . '</h2>';
+		echo '<h1>' . esc_html( $this->plugin_name ) . '</h1>';
 
 		echo wp_kses(
 			$this->render_promotion_notice(),
