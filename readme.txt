@@ -15,7 +15,7 @@ Simple interface for CleverReach newsletter software using the official CleverRe
 
 == Description ==
 
-The CleverReach Extension for WordPress provides an easy way to embed your CleverReach](http://www.cleverreach.com/) sign-up form anywhere on your website.
+The CleverReach Extension for WordPress provides an easy way to embed your [CleverReach](http://www.cleverreach.com/) sign-up form anywhere on your website.
 
 = Features =
 * Easily embed your CleverReach sign-up form anywhere on your website
