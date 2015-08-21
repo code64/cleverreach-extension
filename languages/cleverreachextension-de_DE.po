@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: CleverReach Extension 0.1.0\n"
+"Project-Id-Version: CleverReach Extension 0.2.0\n"
 "Report-Msgid-Bugs-To: https://code64.de\n"
-"POT-Creation-Date: 2015-05-14 23:35+0100\n"
-"PO-Revision-Date: 2015-05-14 23:40+0100\n"
+"POT-Creation-Date: 2015-08-21 13:25+0100\n"
+"PO-Revision-Date: 2015-08-21 13:25+0100\n"
 "Last-Translator: Sven Hofmann <info@hofmannsven.com>\n"
 "Language-Team: Sven Hofmann <info@hofmannsven.com>\n"
 "Language: de_DE\n"
@@ -18,109 +18,121 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/class-cre-admin.php:74 admin/class-cre-admin.php:162
+#: admin/class-cre-admin.php:128 admin/class-cre-admin.php:403
+msgid "Please select a list"
+msgstr "Bitte wähle eine Liste"
+
+#: admin/class-cre-admin.php:129 admin/class-cre-admin.php:432
+msgid "Please select a form"
+msgstr "Bitte wähle ein Formular"
+
+#: admin/class-cre-admin.php:200 admin/class-cre-admin.php:291
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: admin/class-cre-admin.php:169
+#: admin/class-cre-admin.php:298
 msgid "API Key"
 msgstr "API Key"
 
-#: admin/class-cre-admin.php:177
+#: admin/class-cre-admin.php:306
 msgid "List"
 msgstr "Liste"
 
-#: admin/class-cre-admin.php:185
+#: admin/class-cre-admin.php:314 includes/supports/visual-composer.php:47
 msgid "Form"
 msgstr "Formular"
 
-#: admin/class-cre-admin.php:193
+#: admin/class-cre-admin.php:322
 msgid "Source"
 msgstr "Quelle"
 
-#: admin/class-cre-admin.php:246
+#: admin/class-cre-admin.php:381
 msgid "CleverReach API Keys can be created within Account » Extras » API"
 msgstr ""
 "CleverReach API Keys können unter Account » Extras » API erstellt werden."
 
-#: admin/class-cre-admin.php:318
+#: admin/class-cre-admin.php:456
 msgid "(optional)"
 msgstr "(optional)"
 
-#: admin/class-cre-admin.php:329
+#: admin/class-cre-admin.php:467
 msgid "Use the fields below to connect WordPress and CleverReach."
 msgstr ""
 "Nutze die Eingabefelder, um die Verbindung zwischen WordPress und "
 "CleverReach herzustellen."
 
-#: admin/class-cre-admin.php:347 includes/api/class-cleverreach.php:110
-msgid "Your API key is invalid."
-msgstr "Dein API Key ist ungültig."
-
-#: admin/class-cre-admin.php:351
-msgid "Please select a list."
-msgstr "Bitte wähle eine Liste aus."
-
-#: admin/class-cre-admin.php:355
-msgid "Please select a form."
-msgstr "Bitte wähle ein Formular aus."
-
-#: admin/class-cre-admin.php:381
+#: admin/class-cre-admin.php:488
 msgid "Still need a CleverReach account?"
 msgstr "Du hast noch keinen CleverReach-Account?"
 
-#: admin/class-cre-admin.php:383
+#: admin/class-cre-admin.php:490
 msgid "Sign up for free!"
 msgstr "Melden Sie sich jetzt kostenlos an!"
 
-#: admin/class-cre-admin.php:406
+#: admin/class-cre-admin.php:513
 msgid "Your Shortcode"
 msgstr "Dein Shortcode"
 
-#: admin/class-cre-admin.php:409
+#: admin/class-cre-admin.php:516
 msgid "You can use the shortcode below everywhere on your page."
 msgstr ""
 "Du kannst den unten stehenden Shortcode überall auf der der Seite einfügen."
 
-#: admin/class-cre-admin.php:410
+#: admin/class-cre-admin.php:517 includes/supports/visual-composer.php:51
 msgid "Check the wiki on how to customize your form."
 msgstr ""
 "Schau in das Wiki, um zu erfahren, wie du dein eigenes Formular einbinden "
 "kannst."
 
-#: cleverreach-extension.php:43
+#: cleverreach-extension.php:45
 #, php-format
 msgid "CleverReach Extension plugin requires PHP %s or greater."
 msgstr "CleverReach Extension Plugin benötigt PHP %s oder neuer."
 
-#: cleverreach-extension.php:44 cleverreach-extension.php:53
+#: cleverreach-extension.php:46 cleverreach-extension.php:55
 msgid "Plugin Activation Error"
 msgstr "Fehler beim Aktivieren des Plugins"
 
-#: cleverreach-extension.php:52
+#: cleverreach-extension.php:54
 #, php-format
 msgid "CleverReach Extension plugin requires PHP %s extension."
 msgstr "CleverReach Extension Plugin benötigt die PHP %s Extension."
 
-#: cleverreach-extension.php:81
+#: cleverreach-extension.php:83
 msgid "CleverReach Extension"
 msgstr "CleverReach Extension"
 
-#: includes/class-cre-models.php:62
+#: includes/api/class-cleverreach.php:76
+msgid "Your API key is invalid."
+msgstr "Dein API Key ist ungültig."
+
+#: includes/class-cre-models.php:56
 msgid "Please apply your own form within your plugin or theme."
 msgstr "Bitte hinterlege dein eigenes Formular in deinem Plugin oder Theme."
 
-#: public/class-cre-public.php:74
+#: includes/supports/visual-composer.php:30
+msgid "Custom"
+msgstr "Individuell"
+
+#: includes/supports/visual-composer.php:35
+msgid "CleverReach Form"
+msgstr "CleverReach Formular"
+
+#: includes/supports/visual-composer.php:39
+msgid "CleverReach"
+msgstr "CleverReach"
+
+#: public/class-cre-public.php:83
 msgid "Saving..."
 msgstr "Speichern..."
 
-#: public/class-cre-public.php:75
+#: public/class-cre-public.php:84
 msgid "Please check your email to confirm your subscription."
 msgstr ""
 "Bitte bestätigen Sie ihre Anmeldung noch über den Link in der Bestätigungs-"
 "Email."
 
-#: public/class-cre-public.php:76
+#: public/class-cre-public.php:85
 msgid ""
 "Sorry, there was a problem saving your data. Please try later or contact the "
 "administrator."
@@ -128,18 +140,24 @@ msgstr ""
 "Sorry, es gab ein Problem beim Speichern deiner Daten. Bitte probiere es "
 "später noch einmal oder kontaktiere einen Administrator."
 
-#: public/class-cre-public.php:157
+#: public/class-cre-public.php:178
 msgid "It seems like you're already subscribed to our list."
 msgstr "Du bist scheinbar bereits in unseren Verteiler eingetragen."
 
-#: public/class-cre-public.php:159
+#: public/class-cre-public.php:180
 msgid "Sorry, there seems to be a problem with your data."
 msgstr ""
 "Sorry, es gibt scheinbar ein Problem bei der Verarbeitung deiner Daten."
 
-#: public/class-cre-public.php:167
+#: public/class-cre-public.php:188
 msgid "Sorry, there seems to be a problem with your email address."
 msgstr "Sorry, es gibt scheinbar ein Problem mit deiner E-Mail-Adresse."
+
+#~ msgid "Please select a list."
+#~ msgstr "Bitte wähle eine Liste aus."
+
+#~ msgid "Please select a form."
+#~ msgstr "Bitte wähle ein Formular aus."
 
 #~ msgid "CleverReach Settings"
 #~ msgstr "CleverReach Einstellungen"
@@ -155,6 +173,3 @@ msgstr "Sorry, es gibt scheinbar ein Problem mit deiner E-Mail-Adresse."
 
 #~ msgid "CleverReach API Settings"
 #~ msgstr "CleverReach API Einstellungen"
-
-#~ msgid "CleverReach"
-#~ msgstr "CleverReach"
