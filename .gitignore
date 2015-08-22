@@ -20,6 +20,8 @@ Icon
 # PhpStorm IDE
 *.idea
 
-# Sublime
-.sublime-grunt.cache
-.sass-cache
+# Composer
+vendor/
+
+# Code Climate
+build/

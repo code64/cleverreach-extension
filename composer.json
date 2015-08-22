@@ -16,5 +16,8 @@
   "type": "wordpress-plugin",
   "support": {
     "issues": "https://github.com/hofmannsven/cleverreach-extension/issues"
+  },
+  "require-dev": {
+    "codeclimate/php-test-reporter": "^0.1.2"
   }
 }
