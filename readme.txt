@@ -5,7 +5,7 @@ Tags: cleverreach, email, newsletter, sign-up, opt-in, form, ajax
 
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 0.2.0
+Stable tag: 0.3.0
 
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -21,12 +21,12 @@ The CleverReach Extension for WordPress provides an easy way to embed your [Clev
 * Easily embed your CleverReach sign-up form anywhere on your website
 * Double opt-in according to your CleverReach configuration
 * Smooth form submission using Ajax (no page reload)
-* Optional: Customize your form and error messages via filters (Check the [Wiki](https://github.com/hofmannsven/cleverreach-extension/wiki) for available filters)
+* Optional: Customize your form and error messages via filters
 
-= Looking ahead =
-* Unsubscribe form
-* Support for WordPress Widgets
-* [PHPUnit](https://phpunit.de/) Tests
+Check the [Wiki](https://github.com/hofmannsven/cleverreach-extension/wiki) for available filters and further information.
+
+= Integrations =
+* [Visual Composer](http://vc.wpbakery.com/)
 
 = Languages =
 * English
@@ -34,9 +34,10 @@ The CleverReach Extension for WordPress provides an easy way to embed your [Clev
 * Spanish
 * Russian
 
-= Integrations =
-* [Visual Composer](http://vc.wpbakery.com/)
-* Coming soon: [Contact Form 7](http://contactform7.com/)
+= Looking ahead =
+* Unsubscribe form
+* Support for WordPress Widgets
+* [Contact Form 7](http://contactform7.com/) integration
 
 
 == Installation ==
@@ -103,6 +104,9 @@ Follow [CleverReach Extension on Github](https://github.com/hofmannsven/cleverre
 
 == Changelog ==
 
+= 0.3.0 =
+* [PHPUnit](https://phpunit.de/) Tests
+
 = 0.2.0 =
 * Reworked admin interaction
 * Spanish & Russian translation
@@ -110,4 +114,4 @@ Follow [CleverReach Extension on Github](https://github.com/hofmannsven/cleverre
 * Better file handling, code cleanup and documentation
 
 = 0.1.0 =
-* Initial release
+* [Initial release](http://code64.de/visionerdy/cleverreach-extension-wordpress/)

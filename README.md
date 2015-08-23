@@ -12,12 +12,12 @@ It's a simple interface for [CleverReach](http://www.cleverreach.com/) newslette
 * Easily embed your CleverReach sign-up form anywhere on your website
 * Double opt-in according to your CleverReach configuration
 * Smooth form submission using Ajax (no page reload)
-* Optional: Customize your form and error messages via filters (Check the [Wiki](https://github.com/hofmannsven/cleverreach-extension/wiki) for available filters)
+* Optional: Customize your form and error messages via filters 
 
-### Looking ahead
-* Unsubscribe form
-* Support for WordPress Widgets
-* [PHPUnit](https://phpunit.de/) Tests
+Check the [Wiki](https://github.com/hofmannsven/cleverreach-extension/wiki) for available filters and further information.
+
+### Integrations
+* [Visual Composer](http://vc.wpbakery.com/)
 
 ### Languages
 * English
@@ -25,9 +25,10 @@ It's a simple interface for [CleverReach](http://www.cleverreach.com/) newslette
 * Spanish
 * Russian
 
-### Integrations
-* [Visual Composer](http://vc.wpbakery.com/)
-* Coming soon: [Contact Form 7](http://contactform7.com/)
+### Looking ahead
+* Unsubscribe form
+* Support for WordPress Widgets
+* [Contact Form 7](http://contactform7.com/) integration
 
 
 *** 
