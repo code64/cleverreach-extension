@@ -129,7 +129,7 @@ class Cleverreach_Extension {
 
 		// Check for `$path` and `file_exists()`, even if it costs some extra performance.
 		if ( $path && file_exists( $file ) ) {
-			require $file;
+			require_once $file;
 		}
 
 	}
