@@ -15,18 +15,18 @@
 	</testsuites>
 
 	<logging>
-        <log type="coverage-clover" target="build/logs/clover.xml"/>
-    </logging>
+		<log type="coverage-clover" target="build/logs/clover.xml"/>
+	</logging>
 
-    <filter>
-        <whitelist>
-            <exclude>
-                <directory>./assets</directory>
-                <directory>./bin</directory>
-                <directory>./languages</directory>
-                <directory>./tests</directory>
-                <directory>./vendor</directory>
-            </exclude>
-        </whitelist>
-    </filter>
+	<filter>
+		<whitelist>
+			<exclude>
+				<directory>./assets</directory>
+				<directory>./bin</directory>
+				<directory>./languages</directory>
+				<directory>./tests</directory>
+				<directory>./vendor</directory>
+			</exclude>
+		</whitelist>
+	</filter>
 </phpunit>
