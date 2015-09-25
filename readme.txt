@@ -37,6 +37,7 @@ Check the [Wiki](https://github.com/hofmannsven/cleverreach-extension/wiki) for 
 = Looking ahead =
 * Unsubscribe form
 * Support for WordPress Widgets
+* Support for [CleverReach REST API](https://rest.cleverreach.com/explorer/)
 * [Contact Form 7](http://contactform7.com/) integration
 
 
@@ -63,7 +64,7 @@ Using the latest version of WordPress and PHP is highly recommended.
 3. Click 'Install Now'
 4. Activate the plugin on the plugin dashboard
 
-= Using FTP =
+= Using SFTP =
 1. Unzip the download package
 2. Upload `cleverreach-extension` folder to your plugins directory
 3. Activate the plugin on the plugin dashboard
@@ -105,7 +106,8 @@ Follow [CleverReach Extension on Github](https://github.com/hofmannsven/cleverre
 == Changelog ==
 
 = 0.3.0 =
-* [PHPUnit](https://phpunit.de/) Tests
+* [PHPUnit](https://phpunit.de/) integration
+* Add support for [custom ajax requests](https://github.com/hofmannsven/cleverreach-extension/wiki/Custom-ajax-requests)
 
 = 0.2.0 =
 * Reworked admin interaction

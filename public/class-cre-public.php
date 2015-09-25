@@ -78,7 +78,7 @@ class Cre_Public {
 			$this->plugin_name,
 			'cre',
 			array(
-				'ajaxurl'            => esc_url( admin_url( 'admin-ajax.php' ) ),
+				'ajaxurl'            => esc_url( apply_filters( 'cleverreach_extension_ajaxurl', admin_url( 'admin-ajax.php' ) ) ),
 				'nonce'              => wp_create_nonce( $this->plugin_name . '_ajax_interaction_nonce' ),
 				'loading'            => sanitize_text_field( apply_filters( 'cleverreach_extension_loading_msg', esc_html__( 'Saving...', 'cleverreachextension' ) ) ),
 				'success'            => sanitize_text_field( apply_filters( 'cleverreach_extension_success_msg', esc_html__( 'Please check your email to confirm your subscription.', 'cleverreachextension' ) ) ),
