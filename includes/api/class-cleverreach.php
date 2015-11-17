@@ -25,8 +25,8 @@ class Cleverreach {
 		$this->client = new \SoapClient( 'http://api.cleverreach.com/soap/interface_v5.1.php?wsdl' );
 
 		$helper        = new Core\Cre_Helper();
-		$this->api_key = $helper->get_option( 'api_key' );
-		$this->list_id = $helper->get_option( 'list_id' );
+		$this->api_key = sanitize_key( trim( apply_filters( 'cleverreach_extension_api_key', $helper->get_option( 'api_key' ) ) ) );
+		$this->list_id = sanitize_key( absint( trim( apply_filters( 'cleverreach_extension_list_id', $helper->get_option( 'list_id' ) ) ) ) );
 
 	}
 
@@ -116,6 +116,7 @@ class Cleverreach {
 	 */
 	public function api_send_mail( $method, $form_id, $email, $data ) {
 
+		$form_id = sanitize_key( absint( trim( apply_filters( 'cleverreach_extension_form_id', $form_id ) ) ) );
 		$result = $this->client->$method( $this->api_key, $form_id, $email, $data );
 
 		if ( 'SUCCESS' != $result->status ) {
